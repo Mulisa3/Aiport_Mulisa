@@ -35,5 +35,5 @@ airports.drop(['type', 'source', "id", "airport", "city", "country", "iata", "ic
 st.table(airports)  
 
 # Create a world map to show distributions of users 
-
+st.map(airports)
  
