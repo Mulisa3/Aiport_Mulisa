@@ -31,7 +31,7 @@ airports.columns = ["id", "airport", "city", "country", "iata", "icao", "latitud
 airports.drop(['type', 'source'], axis=1, inplace=True) #removing type and source thereby dropping redundant columns 
 
 #Print the airports data
-#st.table(airports)  
+st.table(airports)  
 
 # Create a world map to show distributions of users 
 
