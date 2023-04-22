@@ -20,9 +20,6 @@ In the meantime, below is an example of what you can do with just a few lines of
 import numpy as np
 import pandas as pd
 import csv
-from google.colab import drive
-
-drive.mount('/content/drive')
 
 airports =  pd.read_csv('/content/drive/MyDrive/airports.dat', header=None, na_values=['\\N'], dtype=str) #read airports data
 
