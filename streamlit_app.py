@@ -28,27 +28,12 @@ airports.columns = ["id", "airport", "city", "country", "iata", "icao", "latitud
                     "longitude", "altitude", "offset", "dst", "timezone", "type", "source"]
 
 #Cleaning data in the dataframe
-airports.drop(['type', 'source'], axis=1, inplace=True) #removing type and source thereby dropping redundant columns 
+airports.drop(['type', 'source', "id", "airport", "city", "country", "iata", "icao",
+               "altitude", "offset", "dst", "timezone", "type", "source"], axis=1, inplace=True) #removing type and source thereby dropping redundant columns 
 
 #Print the airports data
-#st.table(airports)  
+st.table(airports)  
 
 # Create a world map to show distributions of users 
 
  
-m = folium.Map(location=[airports.latitude.mean(), airports.longitude.mean()], 
-                 zoom_start=3, control_scale=True)
-
-#Loop through each row in the dataframe
-for i,row in airports.iterrows():
-    #Setup the content of the popup
-    iframe = folium.IFrame('Well Name:' + str(row["Well Name"]))
-    
-    #Initialise the popup using the iframe
-    popup = folium.Popup(iframe, min_width=300, max_width=300)
-    
-    #Add each row to the map
-    folium.Marker(location=[row['latitude'],row['longitude']],
-                  popup = popup, c=row['Well Name']).add_to(m)
-
-st_data = st_folium(m, width=700)
