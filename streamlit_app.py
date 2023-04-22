@@ -28,7 +28,7 @@ airports.columns = ["id", "airport", "city", "country", "iata", "icao", "latitud
                     "longitude", "altitude", "offset", "dst", "timezone", "type", "source"]
 
 #Cleaning data in the dataframe
-#airports.drop(['type', 'source'], axis=1, inplace=True) #removing type and source thereby dropping redundant columns 
+airports.drop(['type', 'source'], axis=1, inplace=True) #removing type and source thereby dropping redundant columns 
 
 #Print the airports data
 st.table(airports)  
