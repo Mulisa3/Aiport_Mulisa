@@ -34,7 +34,10 @@ airports.drop(['type', 'source'], axis=1, inplace=True) #removing type and sourc
 #st.table(airports)  
 
 # Create a world map to show distributions of users 
+import folium
+import streamlit as st
 
+from streamlit_folium import st_folium
 
 #empty map
 world_map= folium.Map(location=(30, 10), zoom_start=1.99, tiles="cartodb positron")
