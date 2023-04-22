@@ -35,8 +35,7 @@ airports.drop(['type', 'source'], axis=1, inplace=True) #removing type and sourc
 
 # Create a world map to show distributions of users 
 
-import folium
-from folium.plugins import MarkerCluster
+
 #empty map
 world_map= folium.Map(location=(30, 10), zoom_start=1.99, tiles="cartodb positron")
 marker_cluster = MarkerCluster().add_to(world_map)
