@@ -21,7 +21,7 @@ import numpy as np
 import pandas as pd
 import csv
 
-airports =  pd.read_csv('/content/drive/MyDrive/airports.dat', header=None, na_values=['\\N'], dtype=str) #read airports data
+airports =  pd.read_csv('airports.dat', header=None, na_values=['\\N'], dtype=str) #read airports data
 
 #Naming column headers
 airports.columns = ["id", "airport", "city", "country", "iata", "icao", "latitude", 
