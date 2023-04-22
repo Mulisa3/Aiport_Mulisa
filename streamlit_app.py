@@ -38,23 +38,20 @@ import folium
 from folium.plugins import MarkerCluster
 
 #empty map
-world_map= folium.Map(location=(30, 10), zoom_start=1.99, tiles="cartodb positron")
-marker_cluster = MarkerCluster().add_to(world_map)
-#for each coordinate, create circlemarker of user percent
-for i in range(len(airports)):
-        lat = airports.iloc[i]['latitude']
-        long = airports.iloc[i]['longitude']
-        radius=6
-        popup_text = """airport : {}<br>
-                     country : {}<br>
-                     city : {}<br>
-                     altitude : {}<br>"""
-        popup_text = popup_text.format(airports.iloc[i]['airport'],
-                                       airports.iloc[i]['country'],
-                                       airports.iloc[i]['city'],
-                                       airports.iloc[i]['altitude'],
-                                       )
-        
-        folium.CircleMarker(location = [lat, long], radius=radius, popup= popup_text, fill =True).add_to(marker_cluster)
-#show the map
-world_map
+
+m = folium.Map(location=[airports.latitude.mean(), airports.longitude.mean()], 
+                 zoom_start=3, control_scale=True)
+
+#Loop through each row in the dataframe
+for i,row in df.iterrows():
+    #Setup the content of the popup
+    iframe = folium.IFrame('Well Name:' + str(row["Well Name"]))
+    
+    #Initialise the popup using the iframe
+    popup = folium.Popup(iframe, min_width=300, max_width=300)
+    
+    #Add each row to the map
+    folium.Marker(location=[row['latitude'],row['longitude']],
+                  popup = popup, c=row['Well Name']).add_to(m)
+
+st_data = st_folium(m, width=700)
