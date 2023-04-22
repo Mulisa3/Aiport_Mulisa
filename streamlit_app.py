@@ -45,13 +45,13 @@ m = folium.Map(location=[airports.latitude.mean(), airports.longitude.mean()],
 #Loop through each row in the dataframe
 for i,row in airports.iterrows():
     #Setup the content of the popup
-    iframe = folium.IFrame('country:' + str(row["country"]))
+    iframe = folium.IFrame('altitude:' + str(row["altitude"]))
     
     #Initialise the popup using the iframe
     popup = folium.Popup(iframe, min_width=300, max_width=300)
     
     #Add each row to the map
     folium.Marker(location=[row['latitude'],row['longitude']],
-                  popup = popup, c=row['country']).add_to(m)
+                  popup = popup, c=row['altitude']).add_to(m)
 
 st_data = st_folium(m, width=700)
