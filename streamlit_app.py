@@ -35,7 +35,6 @@ airports.drop(['type', 'source'], axis=1, inplace=True) #removing type and sourc
 
 # Create a world map to show distributions of users 
 
-from streamlit_folium import st_folium
 import folium
 from folium.plugins import MarkerCluster
 #empty map
