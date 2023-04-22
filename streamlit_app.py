@@ -31,7 +31,31 @@ airports.columns = ["id", "airport", "city", "country", "iata", "icao", "latitud
 airports.drop(['type', 'source'], axis=1, inplace=True) #removing type and source thereby dropping redundant columns 
 
 #Print the airports data
-st.table(airports)  
+#st.table(airports)  
 
 # Create a world map to show distributions of users 
 
+# Create a world map to show distributions of users 
+import folium
+from folium.plugins import MarkerCluster
+#empty map
+world_map= folium.Map(location=(30, 10), tiles="cartodb positron")
+marker_cluster = MarkerCluster().add_to(world_map)
+#for each coordinate, create circlemarker of user percent
+for i in range(len(airports)):
+        lat = airports.iloc[i]['latitude']
+        long = airports.iloc[i]['longitude']
+        radius=6
+        popup_text = """airport : {}<br>
+                     country : {}<br>
+                     city : {}<br>
+                     altitude : {}<br>"""
+        popup_text = popup_text.format(airports.iloc[i]['airport'],
+                                       airports.iloc[i]['country'],
+                                       airports.iloc[i]['city'],
+                                       airports.iloc[i]['altitude'],
+                                       )
+        
+        folium.CircleMarker(location = [lat, long], radius=radius, popup= popup_text, fill =True).add_to(marker_cluster)
+#show the map
+world_map
