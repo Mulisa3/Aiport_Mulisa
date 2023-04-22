@@ -34,8 +34,8 @@ airports.drop(['type', 'source'], axis=1, inplace=True) #removing type and sourc
 #st.table(airports)  
 
 # Create a world map to show distributions of users 
-conda install -c conda-forge streamlit-folium
 
+from streamlit_folium import st_folium
 import folium
 from folium.plugins import MarkerCluster
 #empty map
