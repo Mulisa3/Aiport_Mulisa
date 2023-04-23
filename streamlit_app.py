@@ -33,12 +33,12 @@ airports.drop(['type', 'source'], axis=1, inplace=True) #removing type and sourc
 
 #Print the airports data
 #airports  
-airports1 = airports.groupby('country')['airport'].count().reset_index()
+#airports1 = airports.groupby('country')['airport'].count().reset_index()
 
-st.write('My column')
-st.table(airports1)
+#st.write('My column')
+#st.table(airports1)
 
-st.bar_chart(airports1, x='country', y= 'airport')
+#st.bar_chart(airports1, x='country', y= 'airport')
 # Create a world map to show distributions of users 
 import folium
 from folium.plugins import MarkerCluster
