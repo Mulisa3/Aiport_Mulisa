@@ -27,39 +27,20 @@ airports =  pd.read_csv('airports.dat', header=None, na_values=['\\N'], dtype=st
 airports.columns = ["id", "airport", "city", "country", "iata", "icao", "latitude", 
                     "longitude", "altitude", "offset", "dst", "timezone", "type", "source"]
 
-
 #Cleaning data in the dataframe
 airports.drop(['type', 'source'], axis=1, inplace=True) #removing type and source thereby dropping redundant columns 
 
+
+
+# Drop rows with NaN values in the timezone column
+airports.dropna(subset=['timezone','iata'], inplace=True)
+
 #Print the airports data
 #airports  
-#airports1 = airports.groupby('country')['airport'].count().reset_index()
+airports1 = airports.groupby('country')['airport'].count().reset_index()
 
-#st.write('My column')
-#st.table(airports1)
+st.write('My column')
+st.table(airports1)
 
-#st.bar_chart(airports1, x='country', y= 'airport')
-# Create a world map to show distributions of users 
-import folium
-from folium.plugins import MarkerCluster
-#empty map
-world_map= folium.Map(location=(30, 10), tiles="cartodb positron")
-marker_cluster = MarkerCluster().add_to(world_map)
-#for each coordinate, create circlemarker of user percent
-for i in range(len(airports)):
-        lat = airports.iloc[i]['latitude']
-        long = airports.iloc[i]['longitude']
-        radius=6
-        popup_text = """airport : {}<br>
-                     country : {}<br>
-                     city : {}<br>
-                     altitude : {}<br>"""
-        popup_text = popup_text.format(airports.iloc[i]['airport'],
-                                       airports.iloc[i]['country'],
-                                       airports.iloc[i]['city'],
-                                       airports.iloc[i]['altitude'],
-                                       )
-        
-        folium.CircleMarker(location = [lat, long], radius=radius, popup= popup_text, fill =True).add_to(marker_cluster)
-#show the map
-world_map
+st.bar_chart(airports1, x='country', y= 'airport')
+
