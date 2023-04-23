@@ -29,7 +29,7 @@ airports.columns = ["id", "airport", "city", "country", "iata", "icao", "latitud
 
 
 #Cleaning data in the dataframe
-airlines.drop(0, axis=0, inplace=True)   # remove id = negative value,thereby dropping redundant rows 
+airports.drop(['type', 'source'], axis=1, inplace=True) #removing type and source thereby dropping redundant columns 
 
-#Print the airlines data
-airlines
+#Print the airports data
+airports  
