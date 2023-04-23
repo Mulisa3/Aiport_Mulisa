@@ -37,10 +37,11 @@ airports.dropna(subset=['timezone','iata'], inplace=True)
 
 #Print the airports data
 #airports  
-airports1 = airports.groupby('country')['airport'].count().reset_index()
+#airports1 = airports.groupby('country')['airport'].count().reset_index()
+countries1 = airports.groupby('timezone')['countries'].count().reset_index()
 
 st.write('My column')
-st.table(airports1)
+st.table(country1)
 
-st.bar_chart(airports1, x='country', y= 'airport')
+st.bar_chart(country1, x='timezone', y= 'country')
 
