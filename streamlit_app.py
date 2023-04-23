@@ -5,6 +5,7 @@ import pandas as pd
 import streamlit as st
 import folium
 from streamlit_folium import st_folium
+import pycountry_convert as pc
 
 """
 # Welcome to Streamlit
@@ -70,9 +71,11 @@ st.bar_chart(airports1, x='country', y= 'airport')
 
 
 # Create a world map to show distributions of users 
+import streamlit as st
+import leafmap.foliumap as leafmap
 
-def display_state_filter(airports, country):
-    country_list = [''] + list(country['country'].unique())
-    country_list.sort()
-    country_index = country_list.index(state_name) if state_name and state_name in state_list else 0
-    return st.sidebar.selectbox('country', country_list, country_index)
+st.dataframe(airports)
+
+m = leafmap.Map(center=(-31.416668, -64.183334), zoom=5)
+m.add_circle_markers_from_xy(airports, x="longitude", y="latitude")
+m.Popup()
