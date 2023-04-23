@@ -27,13 +27,9 @@ airports =  pd.read_csv('airports.dat', header=None, na_values=['\\N'], dtype=st
 airports.columns = ["id", "airport", "city", "country", "iata", "icao", "latitude", 
                     "longitude", "altitude", "offset", "dst", "timezone", "type", "source"]
 
+
 #Cleaning data in the dataframe
-airports.drop(['type', 'source', "id", "airport", "city", "country", "iata", "icao",
-               "altitude", "offset", "dst", "timezone", "type", "source"], axis=1, inplace=True) #removing type and source thereby dropping redundant columns 
+airlines.drop(0, axis=0, inplace=True)   # remove id = negative value,thereby dropping redundant rows 
 
-#Print the airports data
-#st.table(airports)  
-
-# Create a world map to show distributions of users 
-st.map(airports)
- 
+#Print the airlines data
+airlines
