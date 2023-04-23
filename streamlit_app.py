@@ -33,7 +33,7 @@ airports.drop(['type', 'source'], axis=1, inplace=True) #removing type and sourc
 
 #Print the airports data
 #airports  
-airports1 = airports.groupby('country')['airports'].count().reset_index()
+airports1 = airports.groupby('country')['airport'].count().reset_index()
 
 st.write('My column')
 st.table(airpots1)
