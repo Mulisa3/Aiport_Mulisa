@@ -61,7 +61,7 @@ airports = airports[~airports['airport'].isin(airports_to_drop)]
 airports1 = airports.groupby('country')['airport'].count().reset_index()
 
 
-st.write('**Number Of Airports in African Countries**')
+st.write('**'     '' Number Of Airports in African Countries**')
 #st.table(airports1)
 
 st.bar_chart(airports1, x='country', y= 'airport')
