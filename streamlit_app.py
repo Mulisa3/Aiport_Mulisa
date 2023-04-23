@@ -82,4 +82,3 @@ for index, row in airports.iterrows():
 
 m.to_streamlit()
 
-m.to_streamlit()
