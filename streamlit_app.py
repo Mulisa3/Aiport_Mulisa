@@ -32,8 +32,29 @@ airports.drop(['type', 'source'], axis=1, inplace=True) #removing type and sourc
 
 
 
-# Drop rows with NaN values in the timezone column
-airports.dropna(subset=['timezone','iata'], inplace=True)
+# Create a list of African countries
+african_countries = ['Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', 'Burundi',
+                     'Cameroon', 'Cape Verde', 'Central African Republic', 'Chad', 'Comoros',
+                     'Democratic Republic of the Congo', 'Djibouti', 'Egypt', 'Equatorial Guinea',
+                     'Eritrea', 'Ethiopia', 'Gabon', 'Gambia', 'Ghana', 'Guinea', 'Guinea-Bissau',
+                     'Ivory Coast', 'Kenya', 'Lesotho', 'Liberia', 'Libya', 'Madagascar', 'Malawi',
+                     'Mali', 'Mauritania', 'Mauritius', 'Morocco', 'Mozambique', 'Namibia', 'Niger',
+                     'Nigeria', 'Republic of the Congo', 'Rwanda', 'São Tomé and Príncipe', 'Senegal',
+                     'Seychelles', 'Sierra Leone', 'Somalia', 'South Africa', 'South Sudan', 'Sudan',
+                     'Swaziland', 'Tanzania', 'Togo', 'Tunisia', 'Uganda', 'Zambia', 'Zimbabwe']
+
+# Drop rows with countries that are not in Africa
+airports = airports[airports['country'].isin(african_countries)]
+
+
+# Create a list of airports to drop
+airports_to_drop = ['Newnan Hospital Heliport', 'Shuttle Landing Facility Airport', 'Burnet Municipal Kate Craddock Field', 'Los Alamitos Army Air Field', 'Nasa Shuttle Landing Facility Airport']
+
+# Drop rows with airports to drop
+airports = airports[~airports['airport'].isin(airports_to_drop)]
+
+# Print the updated DataFrame
+#airports
 
 #Print the airports data
 #airports  
