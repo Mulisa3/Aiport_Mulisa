@@ -72,9 +72,13 @@ st.bar_chart(airports1, x='country', y= 'airport')
 # Create a world map to show distributions of users 
 import streamlit as st
 import leafmap.foliumap as leafmap
+import folium
 
 st.dataframe(airports)
 
 m = leafmap.Map(center=(8.7832, 34.5085), zoom=5)
-m.add_circle_markers_from_xy(airports, x="longitude", y="latitude", popup=row['city'])
-m.Popup()
+for index, row in airports.iterrows():
+    popup = folium.Popup(f"<strong>{row['city']}</strong>")
+    folium.Marker([row['latitude'], row['longitude']], popup=popup).add_to(m)
+
+m.to_streamlit()
