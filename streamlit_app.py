@@ -38,7 +38,7 @@ airports.dropna(subset=['timezone','iata'], inplace=True)
 #Print the airports data
 #airports  
 #airports1 = airports.groupby('country')['airport'].count().reset_index()
-countries1 = airports.groupby('timezone')['country'].count().reset_index()
+country1 = airports.groupby('timezone')['country'].count().reset_index()
 
 st.write('My column')
 st.table(country1)
