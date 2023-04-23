@@ -3,6 +3,8 @@ import altair as alt
 import math
 import pandas as pd
 import streamlit as st
+import folium
+from streamlit_folium import st_folium
 
 """
 # Welcome to Streamlit
@@ -68,26 +70,9 @@ st.bar_chart(airports1, x='country', y= 'airport')
 
 
 # Create a world map to show distributions of users 
-import folium
-from folium.plugins import MarkerCluster
-#empty map
-world_map= folium.Map(location=(30, 10), tiles="cartodb positron")
-marker_cluster = MarkerCluster().add_to(world_map)
-#for each coordinate, create circlemarker of user percent
-for i in range(len(airports)):
-        lat = airports.iloc[i]['latitude']
-        long = airports.iloc[i]['longitude']
-        radius=6
-        popup_text = """airport : {}<br>
-                     country : {}<br>
-                     city : {}<br>
-                     altitude : {}<br>"""
-        popup_text = popup_text.format(airports.iloc[i]['airport'],
-                                       airports.iloc[i]['country'],
-                                       airports.iloc[i]['city'],
-                                       airports.iloc[i]['altitude'],
-                                       )
-        
-        folium.CircleMarker(location = [lat, long], radius=radius, popup= popup_text, fill =True).add_to(marker_cluster)
-#show the map
-world_map
+
+def display_state_filter(airports, country):
+    country_list = [''] + list(country['country'].unique())
+    country_list.sort()
+    country_index = country_list.index(state_name) if state_name and state_name in state_list else 0
+    return st.sidebar.selectbox('country', country_list, country_index)
