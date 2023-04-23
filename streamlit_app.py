@@ -38,4 +38,4 @@ airports1 = airports.groupby('country')['airport'].count().reset_index()
 st.write('My column')
 st.table(airports1)
 
-st.bar_chart(airports1, x='country', y= 'airports')
+st.bar_chart(airports1, x='country', y= 'airport')
