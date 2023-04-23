@@ -76,5 +76,5 @@ import leafmap.foliumap as leafmap
 st.dataframe(airports)
 
 m = leafmap.Map(center=(8.7832, 34.5085), zoom=5)
-m.add_circle_markers_from_xy(airports, x="longitude", y="latitude")
+m.add_circle_markers_from_xy(airports, x="longitude", y="latitude", popup=row['city']).add_to(map))
 m.Popup()
