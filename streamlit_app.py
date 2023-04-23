@@ -76,7 +76,7 @@ import folium
 
 st.dataframe(airports)
 
-m = leafmap.Map(center=(-31.416668, -64.183334), zoom=5)
+m = leafmap.Map(center=(8.7832, 34.5085), zoom=5)
 for index, row in airports.iterrows():
     popup = folium.Popup(f"<strong>City:</strong> {row['city']}<br><strong>Airport:</strong> {row['airport']}<br><strong>Altitude:</strong> {row['altitude']} m")
     folium.Marker([row['latitude'], row['longitude']], popup=popup).add_to(m)
