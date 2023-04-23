@@ -78,7 +78,7 @@ st.dataframe(airports)
 
 for index, row in airports.iterrows():
     popup = folium.Popup(f"<strong>City:</strong> {row['city']}<br><strong>Airport:</strong> {row['airport']}<br><strong>Altitude:</strong> {row['altitude']} m")
-    folium.Marker([row['latitude_deg'], row['longitude_deg']], popup=popup).add_to(m)
+    folium.Marker([row['latitude'], row['longitude']], popup=popup).add_to(m)
 
 m.to_streamlit()
 
