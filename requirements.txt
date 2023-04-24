@@ -2,6 +2,8 @@ altair
 streamlit
 pandas
 geopandas
+shapely --no-binary=shapely
+cartopy --no-binary=cartopy
 folium
 leafmap
 streamlit_folium
