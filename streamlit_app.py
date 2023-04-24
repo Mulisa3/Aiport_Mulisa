@@ -205,7 +205,7 @@ planes.columns = ["model", "iata", "icao"]
 country_counts = airports['country'].value_counts()
 
 # Get the countries with at least 20 airports
-at_least_20_airports = country_counts[airport >= 20]
+at_least_20_airports = country_counts[country_counts >= 20]
 
 # Get the top ten countries by number of airports
 top_ten_countries = at_least_20_airports[:10]
