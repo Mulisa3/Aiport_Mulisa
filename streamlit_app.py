@@ -95,7 +95,7 @@ fig = px.choropleth(airports1, locations='country', locationmode='country names'
                     title='airport by Country')
 
 # set the map projection and center it on Africa
-fig.update_geos(projection_type='natural earth', center=dict(lon=20, lat=0), scope='africa')
+fig.update_geos(projection_type='natural earth', center=dict(lon=8.7832, lat=34.5085))
 
 
 # display the map in Streamlit
