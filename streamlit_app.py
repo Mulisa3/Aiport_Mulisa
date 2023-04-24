@@ -198,6 +198,7 @@ planes =  pd.read_csv('planes.dat', header=None, na_values=['\\N'], dtype=str) #
 #Naming column headers
 planes.columns = ["model", "iata", "icao"]
 
+
 # Count the number of flights for each plane
 plane_counts = planes['model'].value_counts()
 
@@ -211,4 +212,7 @@ ax.set_xlabel('Number of Flights')
 ax.set_ylabel('Plane')
 ax.invert_yaxis()
 ax.set_title('Top Ten Planes by Number of Flights')
-plt.show()
+
+# Display the chart in Streamlit
+st.pyplot(fig)
+
