@@ -2,8 +2,6 @@ altair
 streamlit
 pandas
 geopandas
-cartopy
-cartopy.geodesic
 folium
 leafmap
 streamlit_folium
