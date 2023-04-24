@@ -200,34 +200,27 @@ planes.columns = ["model", "iata", "icao"]
 
 ####################################!##############
 
-# Count the number of active airlines for each country
-active_airlines_per_country = airlines[airlines['active'] == 'Y']['country'].value_counts()
 
-# Get the top ten countries by number of active airlines
-top_ten_countries = active_airlines_per_country[:10]
+# Count the number of airports for each country
+country_counts = airports['country'].value_counts()
 
-# Count the number of active and inactive airlines for each country
-active_airlines = airlines[airlines['active'] == 'Y']['country'].value_counts()
-inactive_airlines = airlines[airlines['active'] == 'N']['country'].value_counts()
+# Get the countries with at least 20 airports
+at_least_20_airports = country_counts[airport >= 20]
 
-# Get the top ten countries by number of active airlines
-top_ten_active = active_airlines[:10]
+# Get the top ten countries by number of airports
+top_ten_countries = at_least_20_airports[:10]
 
-# Get the top ten countries by number of inactive airlines
-top_ten_inactive = inactive_airlines[:10]
-
-# Create the double bar chart
+# Create the vertical bar chart
 fig, ax = plt.subplots()
-ax.barh(top_ten_active.index, top_ten_active.values, label='Active')
-ax.barh(top_ten_inactive.index, top_ten_inactive.values, label='Inactive')
-ax.set_xlabel('Number of Airlines')
-ax.set_ylabel('Country')
-ax.invert_yaxis()
-ax.legend()
-ax.set_title('Top Ten Countries by Number of Active and Inactive Airlines')
+ax.bar(top_ten_countries.index, top_ten_countries.values)
+ax.set_xlabel('Country')
+ax.set_ylabel('Number of Airports')
+ax.set_title('Top Ten Countries with At Least 20 Airports')
+plt.xticks(rotation=90)
 
-# Show the chart on Streamlit
+# Display the chart on a Streamlit app
 st.pyplot(fig)
+
 
 
 
