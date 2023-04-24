@@ -100,8 +100,8 @@ for index, row in airports.iterrows():
 #Display a map show distributions of airports in Africa
 m.to_streamlit()
 
-
-
+# Create a new figure
+figure = go.Figure()
 # Create a trace for each flight route
 for i, row in routes.iterrows():
     figure.add_trace(
