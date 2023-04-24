@@ -185,7 +185,7 @@ inactive_airlines = selected_df[selected_df['active'] == 'N']['airline'].count()
 # Create the pie chart
 fig, ax = plt.subplots()
 ax.pie([active_airlines, inactive_airlines], labels=['Active', 'Inactive'], autopct='%1.1f%%')
-ax.set_title(f'Active Airlines in {selected_country}', fontsize=18)
+ax.set_title(f'Active Airlines in {selected_country}', fontsize=8)
 
 # Show the pie chart and the filter pop-up
 st.pyplot(fig)
@@ -211,7 +211,7 @@ fig, ax = plt.subplots()
 ax.bar(top_ten_countries.index, top_ten_countries.values)
 ax.set_xlabel('City')
 ax.set_ylabel('Number of Airports')
-ax.set_title('Top Ten Cities with At Least 2 Airports', fontsize=18)
+ax.set_title('Top Ten Cities with At Least 2 Airports', fontsize=8)
 plt.xticks(rotation=90)
 
 # Display the chart on a Streamlit app
