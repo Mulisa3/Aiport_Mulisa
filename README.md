@@ -15,4 +15,4 @@ Student No : 23734142| Name : Emmanuel Gabana
 **24 April 2023**
 
 
-This Streamlit Dashbord was made by Mulisa Mudau and Emmanuel Gabana."""
+This Streamlit Dashbord was made by Mulisa Mudau and Emmanuel Gabana.We both contributed on each breakdowns,brainstorming,finding sources of information, generating and verifying our python codes.
