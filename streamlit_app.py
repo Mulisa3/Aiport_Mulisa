@@ -86,12 +86,6 @@ routes = pd.merge(routes, destination_airports, left_on='destination_airport', r
 geometry = [LineString([[routes.iloc[i]['longitude_source'], routes.iloc[i]['latitude_source']], [routes.iloc[i]['longitude_destination'], routes.iloc[i]['latitude_destination']]]) for i in range(routes.shape[0])]
 routes = gpd.GeoDataFrame(routes, geometry=geometry, crs='EPSG:4326')
 
-#Dispaly Charts
-st.write('**Number Of Airports in African Countries**')
-#st.table(airports1)
-
-st.bar_chart(airports1, x='country', y='airport')
-
 
 
 # Create a world map to show distributions of airports in Africa
@@ -164,6 +158,13 @@ african_countries = ['Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', '
 # Drop rows with countries that are not in Africa
 airlines = airlines[airlines['country'].isin(african_countries)]
 
+###################################################################!#################
+#Dispaly Charts
+st.write('**Number Of Airports in African Countries**')
+#st.table(airports1)
+
+st.bar_chart(airports1, x='country', y='airport')
+###############################################################!################################
 
 # Create a list of airports to drop,these airports are not in Africa.
 airports_to_drop = ['Newnan Hospital Heliport', 'Shuttle Landing Facility Airport', 'Burnet Municipal Kate Craddock Field', 'Los Alamitos Army Air Field', 'Nasa Shuttle Landing Facility Airport']
@@ -176,7 +177,7 @@ selected_country = st.sidebar.selectbox('Select a country', countries)
 # Create a new dataframe for the selected country
 selected_df = airlines[airlines['country'] == selected_country]
 
-## Count the number of active and inactive airlines for the selected country
+# Count the number of active and inactive airlines for the selected country
 active_airlines = selected_df[selected_df['active'] == 'Y']['airline'].count()
 inactive_airlines = selected_df[selected_df['active'] == 'N']['airline'].count()
 
