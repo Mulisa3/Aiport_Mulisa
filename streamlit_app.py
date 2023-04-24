@@ -82,11 +82,29 @@ fig = px.choropleth(airports1, locations='country', locationmode='country names'
                     color='airport', range_color=[0, max(airports1['airport'])],
                     title='Number of Airports by Country in Africa')
 
+fig.update_layout(
+    title={
+        'text': "Number of Airports by Country in Africa",
+        'y':0.95,
+        'x':0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'
+    },
+    geo={
+        'showframe': True,
+        'projection_type': 'natural earth',
+        'center': {'lon': 20, 'lat': 0},
+        'scope': 'africa'
+    }
+)
+
+fig.show()
+
 # set the map projection and center it on Africa
-fig.update_geos(projection_type='natural earth', center=dict(lon=20, lat=0), scope='africa')
+#fig.update_geos(projection_type='natural earth', center=dict(lon=20, lat=0), scope='africa')
 
 # display the map in Streamlit
-st.plotly_chart(fig)
+#st.plotly_chart(fig)
 
 
 
