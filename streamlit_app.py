@@ -83,7 +83,7 @@ fig = px.choropleth(airports1, locations='country', locationmode='country names'
                     title='Number of Airports by Country in Africa')
 
 # set the map projection and center it on Africa
-fig.update_geos(projection_type='orthographic', center=dict(lon=20, lat=0), scope='africa')
+fig.update_geos(projection_type='nature earth', center=dict(lon=20, lat=0), scope='africa')
 
 # display the map in Streamlit
 st.plotly_chart(fig)
