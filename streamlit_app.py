@@ -14,7 +14,7 @@ from streamlit_folium import st_folium
 import plotly.express as px
 
 """
-# "African Airports Explorer
+# African Airports Explorer
 
 Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:
 
