@@ -2,6 +2,7 @@ altair
 numpy
 pandas
 geopandas
+pyproject-toml
 shapely --no-binary=shapely
 pyshp
 pyproj
