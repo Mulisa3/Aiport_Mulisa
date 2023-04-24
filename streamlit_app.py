@@ -200,8 +200,8 @@ def plot_pie_chart(country):
     selected_df = airlines[airlines['country'] == country]
 
     # Count the number of active and inactive airlines for the selected country
-    active_airlines = selected_df[selected_df['active'] == 'Y']['airlines'].count()
-    inactive_airlines = selected_df[selected_df['active'] == 'N']['airlines'].count()
+    active_airlines = selected_df[selected_df['active'] == 'Y']['airline'].count()
+    inactive_airlines = selected_df[selected_df['active'] == 'N']['airline'].count()
 
     # Create the pie chart
     fig, ax = plt.subplots()
