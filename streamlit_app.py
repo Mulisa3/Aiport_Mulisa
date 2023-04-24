@@ -129,7 +129,7 @@ figure.update_layout(
         countrycolor='rgb(204, 204, 204)',
     ),
 )
-
+"""This African map shows flight routes between different countries and cities. This map uses the users to explore the connectivity of different cities and regions across the continent. By visualizing the network of flight routes in Africa, this map will help users understand the importance of different cities and airports in the continent's air travel infrastructure. The map also shows that there are significant gaps in air travel infrastructure in some regions of the continent, particularly in central Africa."""
 # Display the figure on Streamlit
 st.plotly_chart(figure)
 
