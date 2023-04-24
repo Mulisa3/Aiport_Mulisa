@@ -217,6 +217,7 @@ ax.set_ylabel('Number of Airports')
 ax.set_title('Top Ten Cities with At Least 2 Airports', fontweight='bold', fontsize=10)
 plt.xticks(rotation=90)
 
+"""A bar chart that shows the top ten cities with the highest number of airports in Africa. This chart will provide users with a sense of the importance of different cities in the continent's air travel infrastructure."""
 # Display the chart on a Streamlit app
 st.pyplot(fig)
 
