@@ -166,6 +166,7 @@ st.write(
     f"<h1 style='font-size: 18px; font-weight: bold;'>Number of Airports by Country</h1>",
     unsafe_allow_html=True,
 )
+"""A bar chart that shows the total number of airports in each African country. This chart will provide users with a broad overview of the distribution of airport infrastructure across the continent and will highlight countries that have relatively low numbers of airports and may benefit from investment and development."""
 st.bar_chart(airports1, x='country', y='airport')
 ###############################################################!################################
 
