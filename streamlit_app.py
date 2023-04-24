@@ -101,8 +101,6 @@ for index, row in airports.iterrows():
 m.to_streamlit()
 
 
-# Create a new figure
-figure = go.Figure()
 
 # Create a trace for each flight route
 for i, row in routes.iterrows():
@@ -110,17 +108,18 @@ for i, row in routes.iterrows():
         go.Scattergeo(
             lat=[row['latitude_source'], row['latitude_destination']],
             lon=[row['longitude_source'], row['longitude_destination']],
-            mode='lines',
+            mode='lines+markers',
             line=dict(width=1, color='red'),
             hoverinfo='text',
             text=f"{row['airport_source']} to {row['airport_destination']}",
-            name='Flight Route'
+            name='Flight Route',
+            curve = 0.5 # change this value to adjust the curvature of the line
         )
     )
 
 # Update the layout of the figure
 figure.update_layout(
-    title='Flight Routes in Africa',
+    title='Flight Routes',
     geo=dict(
         scope='africa',
         projection_type='natural earth',
@@ -129,6 +128,9 @@ figure.update_layout(
         countrycolor='rgb(204, 204, 204)',
     ),
 )
+
+# Display the figure on Streamlit
+st.plotly_chart(figure)
 
 # Display the figure on Streamlit
 st.plotly_chart(figure)
