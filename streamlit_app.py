@@ -98,7 +98,8 @@ fig.update_layout(
     }
 )
 
-fig.show()
+st.plotly_chart(fig)
+
 
 # set the map projection and center it on Africa
 #fig.update_geos(projection_type='natural earth', center=dict(lon=20, lat=0), scope='africa')
