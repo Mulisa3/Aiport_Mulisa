@@ -213,7 +213,7 @@ top_ten_countries = at_least_20_airports[:10]
 # Create the vertical bar chart
 fig, ax = plt.subplots()
 ax.bar(top_ten_countries.index, top_ten_countries.values)
-ax.set_xlabel('Country')
+ax.set_xlabel('City')
 ax.set_ylabel('Number of Airports')
 ax.set_title('Top Ten Cities with At Least 2 Airports')
 plt.xticks(rotation=90)
