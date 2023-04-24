@@ -205,7 +205,7 @@ planes.columns = ["model", "iata", "icao"]
 country_counts = airports['city'].value_counts()
 
 # Get the countries with at least 20 airports
-at_least_20_airports = country_counts[country_counts >= 5]
+at_least_20_airports = country_counts[country_counts >= 2]
 
 # Get the top ten countries by number of airports
 top_ten_countries = at_least_20_airports[:10]
@@ -215,7 +215,7 @@ fig, ax = plt.subplots()
 ax.bar(top_ten_countries.index, top_ten_countries.values)
 ax.set_xlabel('Country')
 ax.set_ylabel('Number of Airports')
-ax.set_title('Top Ten Cities with At Least 5 Airports')
+ax.set_title('Top Ten Cities with At Least 2 Airports')
 plt.xticks(rotation=90)
 
 # Display the chart on a Streamlit app
