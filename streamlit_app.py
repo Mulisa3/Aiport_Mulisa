@@ -55,13 +55,18 @@ airports_to_drop = ['Newnan Hospital Heliport', 'Shuttle Landing Facility Airpor
 airports = airports[~airports['airport'].isin(airports_to_drop)]
 
 
-#Create a function that calculate the total number of airports per country 
-airports1 = airports.groupby('country')['airport'].count().reset_index()
+# group the airports by country and count the number of airports in each country
+airports1 = airports.groupby('country').size().reset_index(name='NumAirports')
+
+# merge the airport counts back into the original DataFrame
+airports1 = pd.merge(airports, airports1, on='country')
+
+# print the the table rows of the updated DataFrame to check the results
 
 st.write('**Number Of Airports in African Countries**')
 #st.table(airports1)
 
-st.bar_chart(airports1, x='country', y= 'airport')
+st.bar_chart(airports1, x='country', y= 'NumAirports')
 
 
 # Create a world map to show distributions of airports in Africa
