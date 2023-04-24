@@ -16,12 +16,9 @@ import plotly.express as px
 """
 # African Airports Explorer
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:
+Air travel infrastructure plays a critical role in driving economic development, facilitating international trade and travel, and connecting people and businesses across the world. In Africa, however, air travel infrastructure remains underdeveloped and inadequate, hindering the continent's ability to fully participate in the global economy and limiting opportunities for growth and development.
 
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
-
-In the meantime, below is an example of what you can do with just a few lines of code:
+To better understand the state of air travel infrastructure in Africa, we have developed a dashboard that visualizes data on the distribution of airports and airline activity across the continent. Our dashboard includes a variety of charts and visualizations, including a bar graph of the total number of airports in each African country, a pie chart that shows the distribution of active and inactive airlines in each country, and an interactive map that displays the location of airports across Africa and the routes between them.
 """
 
 #Load the airport data
