@@ -20,7 +20,7 @@ forums](https://discuss.streamlit.io).
 In the meantime, below is an example of what you can do with just a few lines of code:
 """
 
-#Load the data
+#Load the airport data
 
 airports =  pd.read_csv('airports.dat', header=None, na_values=['\\N'], dtype=str) #read airports data
 
@@ -57,6 +57,63 @@ airports = airports[~airports['airport'].isin(airports_to_drop)]
 
 # group the airports by country and count the number of airports in each country
 airports1 = airports.groupby('country')['airport'].count().reset_index()
+
+
+
+#Load routes data
+
+routes =  pd.read_csv('routes.dat', header=None, na_values=['\\N'], dtype=str) #read routes data
+
+#Naming column headers
+routes.columns = ["airline", "airline_id", "source_airport", "source_airport_id", "destination_airport",
+                  "destination_airport_id", "codeshare", "stops", "equipment"]
+routes
+
+# Data manipulation and merge dataset(routes.dat and airport.dat) in order to create flight routes map
+
+source_airports = airports[['airport', 'iata', 'icao', 'latitude', 'longitude']]
+destination_airports = source_airports.copy()
+source_airports.columns = [str(col) + '_source' for col in source_airports.columns]
+destination_airports.columns = [str(col) + '_destination' for col in destination_airports.columns]
+routes = routes[['source_airport', 'destination_airport']]
+routes = pd.merge(routes, source_airports, left_on='source_airport', right_on='iata_source')
+routes = pd.merge(routes, destination_airports, left_on='destination_airport', right_on='iata_destination')
+#
+geometry = [LineString([[routes.iloc[i]['longitude_source'], routes.iloc[i]['latitude_source']], [routes.iloc[i]['longitude_destination'], routes.iloc[i]['latitude_destination']]]) for i in range(routes.shape[0])]
+routes = gpd.GeoDataFrame(routes, geometry=geometry, crs='EPSG:4326')
+
+# Create a new figure
+fig = go.Figure()
+
+# Create a trace for each flight route
+for i, row in routes.iterrows():
+    fig.add_trace(
+        go.Scattergeo(
+            lat=[row['latitude_source'], row['latitude_destination']],
+            lon=[row['longitude_source'], row['longitude_destination']],
+            mode='lines',
+            line=dict(width=1, color='red'),
+            hoverinfo='text',
+            text=f"{row['airport_source']} to {row['airport_destination']}",
+            name='Flight Route'
+        )
+    )
+
+# Update the layout of the figure
+fig.update_layout(
+    title='Flight Routes',
+    geo=dict(
+        scope='africa',
+        projection_type='natural earth',
+        showland=True,
+        landcolor='rgb(243, 243, 243)',
+        countrycolor='rgb(204, 204, 204)',
+    ),
+)
+
+# Show the figure
+fig.show()
+
 
 # print the the table rows of the updated DataFrame to check the results
 st.write('**Number Of Airports in African Countries**')
