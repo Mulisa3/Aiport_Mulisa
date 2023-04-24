@@ -56,7 +56,7 @@ airports = airports[~airports['airport'].isin(airports_to_drop)]
 
 
 # group the airports by country and count the number of airports in each country
-airports1 = airports.groupby('country').size().reset_index(name='NumAirports')
+airports1 = airports.groupby('country')['airport'].count().reset_index()
 
 # merge the airport counts back into the original DataFrame
 airports1 = pd.merge(airports, airports1, on='country')
