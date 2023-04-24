@@ -83,3 +83,17 @@ for index, row in airports.iterrows():
 
 m.to_streamlit()
 
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+
+# create a sample dataframe with country names and airport counts
+
+# create a choropleth map using plotly express
+fig = px.choropleth(airports1, locations='country', locationmode='country names',
+                    color='airport', range_color=[0, max(airports1['airport'])],
+                    title='airport by Country')
+# display the map in Streamlit
+st.plotly_chart(fig)
+
+
