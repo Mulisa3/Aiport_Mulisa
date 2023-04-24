@@ -198,21 +198,23 @@ planes =  pd.read_csv('planes.dat', header=None, na_values=['\\N'], dtype=str) #
 #Naming column headers
 planes.columns = ["model", "iata", "icao"]
 
+####################################!##############
 
-# Count the number of flights for each plane
-plane_counts = airlines['airline'].value_counts()
+# Count the number of active airlines for each country
+active_airlines_per_country = airlines[airlines['active'] == 'Y']['country'].value_counts()
 
-# Get the top ten planes by number of flights
-top_ten_planes = plane_counts[:10]
+# Get the top ten countries by number of active airlines
+top_ten_countries = active_airlines_per_country[:10]
 
 # Create the horizontal bar chart
 fig, ax = plt.subplots()
-ax.barh(top_ten_planes.index, top_ten_planes.values)
-ax.set_xlabel('Number of Flights')
-ax.set_ylabel('Plane')
+ax.barh(top_ten_countries.index, top_ten_countries.values)
+ax.set_xlabel('Number of Active Airlines')
+ax.set_ylabel('Country')
 ax.invert_yaxis()
-ax.set_title('Top Ten Planes by Number of Flights')
+ax.set_title('Top Ten Countries by Number of Active Airlines')
 
-# Display the chart in Streamlit
+# Plot the figure on Streamlit
 st.pyplot(fig)
+
 
