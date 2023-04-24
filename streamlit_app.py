@@ -95,7 +95,7 @@ for index, row in airports.iterrows():
     folium.Marker([row['latitude'], row['longitude']], popup=popup).add_to(m)
     
 #Display a map show distributions of airports in Africa
-st.title("A world map that shows the distributions of airports in Africa")
+st.title("<h1 style='font-size:18px;'>"A world map that shows the distributions of airports in Africa")
 m.to_streamlit()
 
 
