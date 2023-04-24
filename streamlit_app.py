@@ -200,7 +200,7 @@ planes.columns = ["model", "iata", "icao"]
 
 
 # Count the number of flights for each plane
-plane_counts = planes['model'].value_counts()
+plane_counts = airlines['airline'].value_counts()
 
 # Get the top ten planes by number of flights
 top_ten_planes = plane_counts[:10]
