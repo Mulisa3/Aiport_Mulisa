@@ -1,3 +1,5 @@
+pip install cartopy
+
 from collections import namedtuple
 import altair as alt
 import math
