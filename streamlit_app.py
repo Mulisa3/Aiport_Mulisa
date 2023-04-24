@@ -64,6 +64,17 @@ st.table(airports1)
 
 st.bar_chart(airports1, x='country', y='airport')
 
+# create a choropleth map using plotly express
+fig = px.choropleth(airports1, locations='country', locationmode='country names',
+                    color='airport', range_color=[0, max(airports1['airport'])],
+                    title='An Africa map that shows the total number of airports per country')
+
+# set the map projection and center it on Africa
+fig.update_geos(projection_type='natural earth', center=dict(lon=20, lat=0), scope='africa') 
+
+# display the map in Streamlit
+st.plotly_chart(fig)
+
 
 # Create a world map to show distributions of airports in Africa
 st.write('**A world map that shows the distributions of airports in Africa**')
@@ -77,16 +88,6 @@ for index, row in airports.iterrows():
 #Display a map show distributions of airports in Africa
 m.to_streamlit()
 
-# create a choropleth map using plotly express
-fig = px.choropleth(airports1, locations='country', locationmode='country names',
-                    color='airport', range_color=[0, max(airports1['airport'])],
-                    title='An Africa map that shows the total number of airports per country')
-
-# set the map projection and center it on Africa
-fig.update_geos(projection_type='natural earth', center=dict(lon=20, lat=0), scope='africa') 
-
-# display the map in Streamlit
-st.plotly_chart(fig)
 
 
 
