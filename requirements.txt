@@ -3,7 +3,7 @@ streamlit
 pandas
 geopandas
 cartopy
-shapely
+cartopy.geodesic
 folium
 leafmap
 streamlit_folium
