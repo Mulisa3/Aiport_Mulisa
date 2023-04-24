@@ -71,7 +71,7 @@ routes =  pd.read_csv('routes.dat', header=None, na_values=['\\N'], dtype=str) #
 #Naming column headers
 routes.columns = ["airline", "airline_id", "source_airport", "source_airport_id", "destination_airport",
                   "destination_airport_id", "codeshare", "stops", "equipment"]
-routes
+#routes
 
 # Data manipulation and merge dataset(routes.dat and airport.dat) in order to create flight routes map
 
@@ -88,7 +88,7 @@ routes = gpd.GeoDataFrame(routes, geometry=geometry, crs='EPSG:4326')
 
 #Dispaly Charts
 st.write('**Number Of Airports in African Countries**')
-st.table(airports1)
+#st.table(airports1)
 
 st.bar_chart(airports1, x='country', y='airport')
 
