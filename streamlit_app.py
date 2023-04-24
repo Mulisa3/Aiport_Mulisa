@@ -140,23 +140,6 @@ figure.update_layout(
 st.plotly_chart(figure)
 
 
-# Create a filter for selecting the country
-countries = airlines_df['country'].unique()
-selected_country = st.sidebar.selectbox('Select a country', countries)
-
-# Create a new dataframe for the selected country
-selected_df = airlines_df[airlines_df['country'] == selected_country]
-
-# Count the number of active and inactive airlines for the selected country
-active_airlines = selected_df[selected_df['active'] == 'Y']['name'].count()
-inactive_airlines = selected_df[selected_df['active'] == 'N']['name'].count()
-
-# Create the pie chart
-fig, ax = plt.subplots()
-ax.pie([active_airlines, inactive_airlines], labels=['Active', 'Inactive'], autopct='%1.1f%%')
-ax.set_title(f'Active Airlines in {selected_country}')
-st.pyplot(fig)
-
 #load airlines data
 
 airlines =  pd.read_csv('airlines.dat', header=None, na_values=['\\N'], dtype=str) #read airlines data
