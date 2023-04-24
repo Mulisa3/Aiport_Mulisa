@@ -95,7 +95,7 @@ import plotly.express as px
 
 # create a choropleth map using Plotly express
 # create a choropleth map using plotly express
-fig = px.choropleth(data, locations='country', locationmode='country names',
+fig = px.choropleth(data, locations='country', locationmode='country',
                     color='airport', range_color=[0, max(airports1['airport'])],
                     title='Number of Airports by Country in Africa')
 
