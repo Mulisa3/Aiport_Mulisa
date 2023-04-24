@@ -66,8 +66,8 @@ st.bar_chart(airports1, x='country', y='airport')
 
 
 # Create a world map to show distributions of airports in Africa
-st.write('**world map to show distributions of airports in Africa**')
-st.dataframe(airports)
+st.write('**A world map that shows the distributions of airports in Africa**')
+#st.dataframe(airports)
 
 m = leafmap.Map(center=(8.7832, 34.5085), zoom=3)
 for index, row in airports.iterrows():
