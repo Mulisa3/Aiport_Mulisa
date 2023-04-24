@@ -96,6 +96,7 @@ for index, row in airports.iterrows():
     
 #Display a map show distributions of airports in Africa
 st.markdown("<h1 style='font-size:18px;'>A world map that shows the distributions of airports in Africa</h1>", unsafe_allow_html=True)
+"""The interactive map above provides a detailed view of the location of airports across the continent. The map highlights the fact that many of the major airports in Africa are in or near major cities, such as Johannesburg in South Africa, Lagos in Nigeria, and Cairo in Egypt. This map wallow users to zoom in and out and click on individual airports to see more detailed information about their location, activity, and time zone. By visualizing the distribution of airports across the continent, this map will provide users with a sense of how air travel infrastructure is distributed across different regions of Africa."""
 m.to_streamlit()
 
 
