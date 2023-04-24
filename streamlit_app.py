@@ -158,9 +158,10 @@ airlines = airlines[airlines['country'].isin(african_countries)]
 
 ###################################################################!#################
 #Dispaly Charts
-st.write('**Number Of Airports in African Countries**')
 #st.table(airports1)
 
+# Create a bar chart and reduce the font size of the title
+st.write('<span style="font-size: 18px;">Number of airports by country</span>', unsafe_allow_html=True)
 st.bar_chart(airports1, x='country', y='airport')
 ###############################################################!################################
 
