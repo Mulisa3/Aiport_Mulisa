@@ -1,10 +1,13 @@
 from collections import namedtuple
 import altair as alt
 import math
+import csv
 import pandas as pd
 import streamlit as st
 import folium
+import leafmap.foliumap as leafmap
 from streamlit_folium import st_folium
+import plotly.express as px
 
 """
 # Welcome to Streamlit
@@ -18,10 +21,6 @@ In the meantime, below is an example of what you can do with just a few lines of
 """
 
 #Load the data
-
-import numpy as np
-import pandas as pd
-import csv
 
 airports =  pd.read_csv('airports.dat', header=None, na_values=['\\N'], dtype=str) #read airports data
 
@@ -49,19 +48,15 @@ african_countries = ['Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', '
 airports = airports[airports['country'].isin(african_countries)]
 
 
-# Create a list of airports to drop
+# Create a list of airports(that are not in Frica) to drop,this are airports that have incorrect information,e.g.The frrom the airports datafile,it says these airports are in Africa which is not true.
 airports_to_drop = ['Newnan Hospital Heliport', 'Shuttle Landing Facility Airport', 'Burnet Municipal Kate Craddock Field', 'Los Alamitos Army Air Field', 'Nasa Shuttle Landing Facility Airport']
 
 # Drop rows with airports to drop
 airports = airports[~airports['airport'].isin(airports_to_drop)]
 
-# Print the updated DataFrame
-#airports
 
-#Print the airports data
-#airports  
+#Create a function that calculate the total number of airports per country 
 airports1 = airports.groupby('country')['airport'].count().reset_index()
-
 
 st.write('**Number Of Airports in African Countries**')
 #st.table(airports1)
@@ -69,10 +64,7 @@ st.write('**Number Of Airports in African Countries**')
 st.bar_chart(airports1, x='country', y= 'airport')
 
 
-# Create a world map to show distributions of users 
-import streamlit as st
-import leafmap.foliumap as leafmap
-import folium
+# Create a world map to show distributions of airports in Africa
 
 st.dataframe(airports)
 
@@ -80,27 +72,17 @@ m = leafmap.Map(center=(8.7832, 34.5085), zoom=3)
 for index, row in airports.iterrows():
     popup = folium.Popup(f"<strong>Airport:</strong> {row['airport']}<br><strong>Country:</strong> {row['country']}<br><strong>City:</strong> {row['city']}<br><strong>IATA:</strong> {row['iata']}<br><strong>ICAO:</strong> {row['icao']}<br><strong>Timezone:</strong> {row['timezone']}<br><strong>Altitude:</strong> {row['altitude']} m")
     folium.Marker([row['latitude'], row['longitude']], popup=popup).add_to(m)
-
+    
+#Display a map show distributions of airports in Africa
 m.to_streamlit()
 
-import streamlit as st
-import pandas as pd
-import plotly.express as px
-
-# create a sample dataframe with country names and airport counts
-
-import streamlit as st
-import pandas as pd
-import plotly.express as px
-
-# create a choropleth map using Plotly express
 # create a choropleth map using plotly express
 fig = px.choropleth(airports1, locations='country', locationmode='country names',
                     color='airport', range_color=[0, max(airports1['airport'])],
                     title='Number of Airports by Country in Africa')
 
 # set the map projection and center it on Africa
-fig.update_geos(projection_type='orthographic', center=dict(lon=20, lat=0), scope='world')
+fig.update_geos(projection_type='orthographic', center=dict(lon=20, lat=0), scope='africa')
 
 # display the map in Streamlit
 st.plotly_chart(fig)
