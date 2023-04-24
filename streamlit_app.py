@@ -90,9 +90,14 @@ import plotly.express as px
 # create a sample dataframe with country names and airport counts
 
 # create a choropleth map using plotly express
-fig = px.choropleth(airports1, locations='country', center=(8.7832, 34.5085), locationmode='country names',
+fig = px.choropleth(airports1, locations='country', locationmode='country names',
                     color='airport', range_color=[0, max(airports1['airport'])],
                     title='airport by Country')
+
+# set the map projection and center it on Africa
+fig.update_geos(projection_type='natural earth', center=dict(lon=20, lat=0), scope='africa')
+
+
 # display the map in Streamlit
 st.plotly_chart(fig)
 
