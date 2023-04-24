@@ -86,7 +86,7 @@ routes = gpd.GeoDataFrame(routes, geometry=geometry, crs='EPSG:4326')
 
 
 # Create a world map to show distributions of airports in Africa
-st.write('**A world map that shows the distributions of airports in Africa**')
+
 #st.dataframe(airports)
 
 m = leafmap.Map(center=(8.7832, 34.5085), zoom=3)
@@ -94,6 +94,9 @@ for index, row in airports.iterrows():
     popup = folium.Popup(f"<strong>Airport:</strong> {row['airport']}<br><strong>Country:</strong> {row['country']}<br><strong>City:</strong> {row['city']}<br><strong>IATA:</strong> {row['iata']}<br><strong>ICAO:</strong> {row['icao']}<br><strong>Timezone:</strong> {row['timezone']}<br><strong>Altitude:</strong> {row['altitude']} m")
     folium.Marker([row['latitude'], row['longitude']], popup=popup).add_to(m)
     
+# Set the title of the map
+m.add_layer(name="A world map that shows the distributions of airports in Africa")    
+
 #Display a map show distributions of airports in Africa
 m.to_streamlit()
 
