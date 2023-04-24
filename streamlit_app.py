@@ -177,7 +177,7 @@ airports_to_drop = ['Newnan Hospital Heliport', 'Shuttle Landing Facility Airpor
 #selected_df = airlines[airlines['country'] == selected_country]
 
 ## Count the number of active and inactive airlines for the selected country
-active_airlines = selected_df[selected_df['active'] == 'Y']['airline'].count()
+#active_airlines = selected_df[selected_df['active'] == 'Y']['airline'].count()
 #inactive_airlines = selected_df[selected_df['active'] == 'N']['airline'].count()
 
 # Create the pie chart
