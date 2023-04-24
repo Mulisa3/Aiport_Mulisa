@@ -86,8 +86,26 @@ routes = pd.merge(routes, destination_airports, left_on='destination_airport', r
 geometry = [LineString([[routes.iloc[i]['longitude_source'], routes.iloc[i]['latitude_source']], [routes.iloc[i]['longitude_destination'], routes.iloc[i]['latitude_destination']]]) for i in range(routes.shape[0])]
 routes = gpd.GeoDataFrame(routes, geometry=geometry, crs='EPSG:4326')
 
-# Create a new figure
-figure = go.Figure()
+#Dispaly Charts
+st.write('**Number Of Airports in African Countries**')
+st.table(airports1)
+
+st.bar_chart(airports1, x='country', y='airport')
+
+
+
+# Create a world map to show distributions of airports in Africa
+st.write('**A world map that shows the distributions of airports in Africa**')
+#st.dataframe(airports)
+
+m = leafmap.Map(center=(8.7832, 34.5085), zoom=3)
+for index, row in airports.iterrows():
+    popup = folium.Popup(f"<strong>Airport:</strong> {row['airport']}<br><strong>Country:</strong> {row['country']}<br><strong>City:</strong> {row['city']}<br><strong>IATA:</strong> {row['iata']}<br><strong>ICAO:</strong> {row['icao']}<br><strong>Timezone:</strong> {row['timezone']}<br><strong>Altitude:</strong> {row['altitude']} m")
+    folium.Marker([row['latitude'], row['longitude']], popup=popup).add_to(m)
+    
+#Display a map show distributions of airports in Africa
+m.to_streamlit()
+
 
 # Create a new figure
 figure = go.Figure()
@@ -110,7 +128,7 @@ for i, row in routes.iterrows():
 figure.update_layout(
     title='Flight Routes in Africa',
     geo=dict(
-        scope='world',
+        scope='africa',
         projection_type='natural earth',
         showland=True,
         landcolor='rgb(243, 243, 243)',
@@ -120,39 +138,6 @@ figure.update_layout(
 
 # Display the figure on Streamlit
 st.plotly_chart(figure)
-
-
-# print the the table rows of the updated DataFrame to check the results
-st.write('**Number Of Airports in African Countries**')
-st.table(airports1)
-
-st.bar_chart(airports1, x='country', y='airport')
-
-# create a choropleth map using plotly express
-fig = px.choropleth(airports1, locations='country', locationmode='country names',
-                    color='airport', range_color=[0, max(airports1['airport'])],
-                    title='An Africa map that shows the total number of airports per country')
-
-# set the map projection and center it on Africa
-fig.update_geos(projection_type='natural earth', center=dict(lon=20, lat=0), scope='africa') 
-
-# display the map in Streamlit
-st.plotly_chart(fig)
-
-
-# Create a world map to show distributions of airports in Africa
-st.write('**A world map that shows the distributions of airports in Africa**')
-#st.dataframe(airports)
-
-m = leafmap.Map(center=(8.7832, 34.5085), zoom=3)
-for index, row in airports.iterrows():
-    popup = folium.Popup(f"<strong>Airport:</strong> {row['airport']}<br><strong>Country:</strong> {row['country']}<br><strong>City:</strong> {row['city']}<br><strong>IATA:</strong> {row['iata']}<br><strong>ICAO:</strong> {row['icao']}<br><strong>Timezone:</strong> {row['timezone']}<br><strong>Altitude:</strong> {row['altitude']} m")
-    folium.Marker([row['latitude'], row['longitude']], popup=popup).add_to(m)
-    
-#Display a map show distributions of airports in Africa
-m.to_streamlit()
-
-
 
 
 
