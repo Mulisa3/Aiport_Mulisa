@@ -1,6 +1,6 @@
 # African Airports Explorer
 
-""" **Assingment 2.: Python**
+""" **Assingment 2: Python**
 
 **Student 1:** 
 
