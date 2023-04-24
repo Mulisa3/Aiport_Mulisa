@@ -1,6 +1,18 @@
-# "African Airports Explorer
+# African Airports Explorer
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire. :heart:
+""" **Assingment 2.: Python**
 
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
+**Student 1:** 
+
+Student No : 20467801 | Name : Mulisa Mudau
+
+**Student 2:** 
+
+Student No : 23734142| Name : Emmanuel Gabana
+
+**GIS 311**
+
+**24 April 2023**
+
+
+This Streamlit Dashbord was made by Mulisa Mudau and Emmanuel Gabana."""
