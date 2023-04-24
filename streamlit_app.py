@@ -118,7 +118,8 @@ for i, row in routes.iterrows():
 
 # Update the layout of the figure
 figure.update_layout(
-    title='Flight Routes',
+    title='Flight Routes In Africa',
+    title_font_size=18,  # set the font size of the title to 24
     geo=dict(
         scope='africa',
         projection_type='natural earth',
