@@ -140,13 +140,6 @@ figure.update_layout(
 st.plotly_chart(figure)
 
 
-import pandas as pd
-import matplotlib.pyplot as plt
-import streamlit as st
-
-# Load the airline data
-airlines_df = pd.read_csv('airlines.csv')
-
 # Create a filter for selecting the country
 countries = airlines_df['country'].unique()
 selected_country = st.sidebar.selectbox('Select a country', countries)
