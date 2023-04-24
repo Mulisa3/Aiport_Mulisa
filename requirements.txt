@@ -1,11 +1,20 @@
 altair
-streamlit
+numpy
 pandas
 geopandas
+eccodes
+scipy
+xarray --no-binary=xarray
+netcdf4 --no-binary=netcdf4
 shapely --no-binary=shapely
 cartopy --no-binary=cartopy
+pyshp
+pyproj
+matplotlib
+plotlY
+streamlit
 folium
 leafmap
 streamlit_folium
 plotly.express
-plotly
+
