@@ -89,23 +89,13 @@ fig.update_layout(
         'x':0.5,
         'xanchor': 'center',
         'yanchor': 'top'
-    },
-    geo={
-        'showframe': True,
-        'projection_type': 'natural earth',
-        'center': {'lon': 20, 'lat': 0},
-        'scope': 'africa'
     }
-)
-
-st.plotly_chart(fig)
-
-
 # set the map projection and center it on Africa
-#fig.update_geos(projection_type='natural earth', center=dict(lon=20, lat=0), scope='africa')
+fig.update_geos(projection_type='natural earth', center=dict(lon=20, lat=0), scope='africa') 
 
 # display the map in Streamlit
-#st.plotly_chart(fig)
+st.plotly_chart(fig)
+
 
 
 
