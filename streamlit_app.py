@@ -193,3 +193,22 @@ st.sidebar.markdown(f'Active airlines in **{selected_country}**: {active_airline
 st.sidebar.markdown(f'Inactive airlines in **{selected_country}**: {inactive_airlines}')
 
 ##############################
+planes =  pd.read_csv('planes.dat', header=None, na_values=['\\N'], dtype=str) #read planes data
+
+#Naming column headers
+planes.columns = ["model", "iata", "icao"]
+
+# Count the number of flights for each plane
+plane_counts = planes['model'].value_counts()
+
+# Get the top ten planes by number of flights
+top_ten_planes = plane_counts[:10]
+
+# Create the horizontal bar chart
+fig, ax = plt.subplots()
+ax.barh(top_ten_planes.index, top_ten_planes.values)
+ax.set_xlabel('Number of Flights')
+ax.set_ylabel('Plane')
+ax.invert_yaxis()
+ax.set_title('Top Ten Planes by Number of Flights')
+plt.show()
