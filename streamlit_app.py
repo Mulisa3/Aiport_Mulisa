@@ -87,11 +87,11 @@ geometry = [LineString([[routes.iloc[i]['longitude_source'], routes.iloc[i]['lat
 routes = gpd.GeoDataFrame(routes, geometry=geometry, crs='EPSG:4326')
 
 # Create a new figure
-fig = go.Figure()
+figure = go.Figure()
 
 # Create a trace for each flight route
 for i, row in routes.iterrows():
-    fig.add_trace(
+    figure.add_trace(
         go.Scattergeo(
             lat=[row['latitude_source'], row['latitude_destination']],
             lon=[row['longitude_source'], row['longitude_destination']],
@@ -104,7 +104,7 @@ for i, row in routes.iterrows():
     )
 
 # Update the layout of the figure
-fig.update_layout(
+figure.update_layout(
     title='Flight Routes',
     geo=dict(
         scope='africa',
@@ -116,7 +116,7 @@ fig.update_layout(
 )
 
 # Show the figure
-fig.show()
+figure.show()
 
 
 # print the the table rows of the updated DataFrame to check the results
