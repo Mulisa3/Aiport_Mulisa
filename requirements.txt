@@ -5,3 +5,4 @@ folium
 leafmap
 streamlit_folium
 plotly.express
+plotly
