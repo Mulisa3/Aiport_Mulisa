@@ -90,7 +90,7 @@ import plotly.express as px
 # create a sample dataframe with country names and airport counts
 
 # create a choropleth map using plotly express
-fig = px.choropleth(airports1, locations='country', locationmode='country names',
+fig = px.choropleth(airports1, locations='8.7832, 34.5085', locationmode='country names',
                     color='airport', range_color=[0, max(airports1['airport'])],
                     title='airport by Country')
 # display the map in Streamlit
