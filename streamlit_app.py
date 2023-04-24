@@ -1,4 +1,4 @@
-pip install cartopy
+pip install git+https://github.com/SciTools/cartopy.git
 
 from collections import namedtuple
 import altair as alt
