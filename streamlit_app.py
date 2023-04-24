@@ -94,14 +94,13 @@ import pandas as pd
 import plotly.express as px
 
 # create a choropleth map using Plotly express
-fig = px.choropleth(airports1,
-                    locations='country',
-                    locationmode='country names',
-                    color='airport',
-                    range_color=[0, max(airports1['airport'])],
-                    title='Airports by Country',
-                    scope=['comoros', 'madagascar', 'mauritius', 'mayotte', 'reunion', 'zimbabwe'],
-                    center={'lat': -10.0, 'lon': 30.0})
+# create a choropleth map using plotly express
+fig = px.choropleth(data, locations='country', locationmode='country names',
+                    color='airport', range_color=[0, max(airports1['airport'])],
+                    title='Number of Airports by Country in Africa')
+
+# set the map projection and center it on Africa
+fig.update_geos(projection_type='orthographic', center=dict(lon=20, lat=0), scope='africa')
 
 # display the map in Streamlit
 st.plotly_chart(fig)
