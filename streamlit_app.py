@@ -180,7 +180,7 @@ airports_to_drop = ['Newnan Hospital Heliport', 'Shuttle Landing Facility Airpor
 
 # Create a filter for selecting the country
 countries = airlines['country'].unique()
-selected_country = st.sidebar.selectbox('Select a country', countries)
+selected_country = st.sidebar.selectbox('Select a country to displayed in the pie chart', countries)
 
 # Create a new dataframe for the selected country
 selected_df = airlines[airlines['country'] == selected_country]
