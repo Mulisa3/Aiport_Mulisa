@@ -1,5 +1,9 @@
 altair
 pandas
+geopandas
+cartopy
+shapely.geometry
+shapely
 streamlit
 folium
 leafmap
