@@ -184,7 +184,7 @@ selected_df = airlines[airlines['country'] == selected_country]
 # Count the number of active and inactive airlines for the selected country
 active_airlines = selected_df[selected_df['active'] == 'Y']['airline'].count()
 inactive_airlines = selected_df[selected_df['active'] == 'N']['airline'].count()
-
+"""A pie chart that shows the percentage of active and inactive airlines in each African country. This chart provides users with a sense of the level of competition and activity in different regions of the continent and will highlight countries where more investment and development may be needed to stimulate growth in the air travel sector. A user can use the filter on the top left corner to select the country and get its airline active status displayed on the pie chart."""
 # Create the pie chart
 fig, ax = plt.subplots()
 ax.pie([active_airlines, inactive_airlines], labels=['Active', 'Inactive'], autopct='%1.1f%%')
