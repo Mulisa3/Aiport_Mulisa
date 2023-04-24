@@ -94,6 +94,7 @@ figure = go.Figure()
 
 # Create a trace for each flight route
 for i, row in routes.iterrows():
+    show_legend = i == 0  # Show legend only for first trace
     figure.add_trace(
         go.Scattergeo(
             lat=[row['latitude_source'], row['latitude_destination']],
@@ -108,7 +109,7 @@ for i, row in routes.iterrows():
 
 # Update the layout of the figure
 figure.update_layout(
-    title='Flight Routes',
+    title='Flight Routes in Africa',
     geo=dict(
         scope='africa',
         projection_type='natural earth',
