@@ -193,12 +193,6 @@ st.sidebar.markdown(f'Inactive airlines in **{selected_country}**: {inactive_air
 
 ##############################
 
-import pandas as pd
-import matplotlib.pyplot as plt
-import streamlit as st
-
-# Load the airline data
-airlines_df = pd.read_csv('airlines.csv')
 
 # Create a function to plot the pie chart
 def plot_pie_chart(country):
