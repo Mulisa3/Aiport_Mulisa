@@ -140,4 +140,73 @@ figure.update_layout(
 st.plotly_chart(figure)
 
 
+import pandas as pd
+import matplotlib.pyplot as plt
+import streamlit as st
+
+# Load the airline data
+airlines_df = pd.read_csv('airlines.csv')
+
+# Create a filter for selecting the country
+countries = airlines_df['country'].unique()
+selected_country = st.sidebar.selectbox('Select a country', countries)
+
+# Create a new dataframe for the selected country
+selected_df = airlines_df[airlines_df['country'] == selected_country]
+
+# Count the number of active and inactive airlines for the selected country
+active_airlines = selected_df[selected_df['active'] == 'Y']['name'].count()
+inactive_airlines = selected_df[selected_df['active'] == 'N']['name'].count()
+
+# Create the pie chart
+fig, ax = plt.subplots()
+ax.pie([active_airlines, inactive_airlines], labels=['Active', 'Inactive'], autopct='%1.1f%%')
+ax.set_title(f'Active Airlines in {selected_country}')
+st.pyplot(fig)
+
+#load airlines data
+
+airlines =  pd.read_csv('airlines.dat', header=None, na_values=['\\N'], dtype=str) #read airlines data
+
+#Naming column headers
+airlines.columns = ["id", "airline", "alias", "iata", "icao", "callsign", "country", "active"]
+
+#Cleaning data in the dataframe
+airlines.drop(0, axis=0, inplace=True)   # remove id = negative value,thereby dropping redundant rows 
+
+# Create a list of African countries
+african_countries = ['Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', 'Burundi',
+                     'Cameroon', 'Cape Verde', 'Central African Republic', 'Chad', 'Comoros',
+                     'Democratic Republic of the Congo', 'Djibouti', 'Egypt', 'Equatorial Guinea',
+                     'Eritrea', 'Ethiopia', 'Gabon', 'Gambia', 'Ghana', 'Guinea', 'Guinea-Bissau',
+                     'Ivory Coast', 'Kenya', 'Lesotho', 'Liberia', 'Libya', 'Madagascar', 'Malawi',
+                     'Mali', 'Mauritania', 'Mauritius', 'Morocco', 'Mozambique', 'Namibia', 'Niger',
+                     'Nigeria', 'Republic of the Congo', 'Rwanda', 'São Tomé and Príncipe', 'Senegal',
+                     'Seychelles', 'Sierra Leone', 'Somalia', 'South Africa', 'South Sudan', 'Sudan',
+                     'Swaziland', 'Tanzania', 'Togo', 'Tunisia', 'Uganda', 'Zambia', 'Zimbabwe']
+
+# Drop rows with countries that are not in Africa
+airlines = airlines[airlines['country'].isin(african_countries)]
+
+
+# Create a list of airports to drop,these airports are not in Africa.
+airports_to_drop = ['Newnan Hospital Heliport', 'Shuttle Landing Facility Airport', 'Burnet Municipal Kate Craddock Field', 'Los Alamitos Army Air Field', 'Nasa Shuttle Landing Facility Airport']
+
+
+# Create a filter for selecting the country
+countries = airlines['country'].unique()
+selected_country = st.sidebar.selectbox('Select a country', countries)
+
+# Create a new dataframe for the selected country
+selected_df = airlines[airlines['country'] == selected_country]
+
+# Count the number of active and inactive airlines for the selected country
+active_airlines = selected_df[selected_df['active'] == 'Y']['airline'].count()
+inactive_airlines = selected_df[selected_df['active'] == 'N']['airline'].count()
+
+# Create the pie chart
+fig, ax = plt.subplots()
+ax.pie([active_airlines, inactive_airlines], labels=['Active', 'Inactive'], autopct='%1.1f%%')
+ax.set_title(f'Active Airlines in {selected_country}')
+st.pyplot(fig)
 
