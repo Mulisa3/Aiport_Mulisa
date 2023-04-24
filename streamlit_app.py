@@ -161,7 +161,7 @@ airlines = airlines[airlines['country'].isin(african_countries)]
 #st.table(airports1)
 
 st.write(
-    f"<h1 style='font-size: 24px; font-weight: bold;'>Number of Airports by Country</h1>",
+    f"<h1 style='font-size: 18px; font-weight: bold;'>Number of Airports by Country</h1>",
     unsafe_allow_html=True,
 )
 st.bar_chart(airports1, x='country', y='airport')
@@ -185,7 +185,7 @@ inactive_airlines = selected_df[selected_df['active'] == 'N']['airline'].count()
 # Create the pie chart
 fig, ax = plt.subplots()
 ax.pie([active_airlines, inactive_airlines], labels=['Active', 'Inactive'], autopct='%1.1f%%')
-ax.set_title(f'Active Airlines in {selected_country}')
+ax.set_title(f'Active Airlines in {selected_country}', fontsize=18)
 
 # Show the pie chart and the filter pop-up
 st.pyplot(fig)
@@ -193,11 +193,6 @@ st.sidebar.markdown('---')
 st.sidebar.markdown(f'Active airlines in **{selected_country}**: {active_airlines}')
 st.sidebar.markdown(f'Inactive airlines in **{selected_country}**: {inactive_airlines}')
 
-##############################
-planes =  pd.read_csv('planes.dat', header=None, na_values=['\\N'], dtype=str) #read planes data
-
-#Naming column headers
-planes.columns = ["model", "iata", "icao"]
 
 ####################################!##############
 
@@ -216,7 +211,7 @@ fig, ax = plt.subplots()
 ax.bar(top_ten_countries.index, top_ten_countries.values)
 ax.set_xlabel('City')
 ax.set_ylabel('Number of Airports')
-ax.set_title('Top Ten Cities with At Least 2 Airports')
+ax.set_title('Top Ten Cities with At Least 2 Airports', fontsize=18)
 plt.xticks(rotation=90)
 
 # Display the chart on a Streamlit app
