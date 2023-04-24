@@ -166,7 +166,7 @@ st.write(
     f"<h1 style='font-size: 18px; font-weight: bold;'>Number of Airports by Country</h1>",
     unsafe_allow_html=True,
 )
-"""A bar chart that shows the total number of airports in each African country. This chart will provide users with a broad overview of the distribution of airport infrastructure across the continent and will highlight countries that have relatively low numbers of airports and may benefit from investment and development."""
+"""This bar chart shows the total number of airports in each African country. This chart will provide users with a broad overview of the distribution of airport infrastructure across the continent and will highlight countries that have relatively low numbers of airports and may benefit from investment and development."""
 st.bar_chart(airports1, x='country', y='airport')
 ###############################################################!################################
 
@@ -184,7 +184,7 @@ selected_df = airlines[airlines['country'] == selected_country]
 # Count the number of active and inactive airlines for the selected country
 active_airlines = selected_df[selected_df['active'] == 'Y']['airline'].count()
 inactive_airlines = selected_df[selected_df['active'] == 'N']['airline'].count()
-"""A pie chart that shows the percentage of active and inactive airlines in each African country. This chart provides users with a sense of the level of competition and activity in different regions of the continent and will highlight countries where more investment and development may be needed to stimulate growth in the air travel sector. A user can use the filter on the top left corner to select the country and get its airline active status displayed on the pie chart."""
+"""A pie chart below shows the percentage of active and inactive airlines in each African country. This chart provides users with a sense of the level of competition and activity in different regions of the continent and will highlight countries where more investment and development may be needed to stimulate growth in the air travel sector. A user can use the filter on the top left corner to select the country and get its airline active status displayed on the pie chart."""
 # Create the pie chart
 fig, ax = plt.subplots()
 ax.pie([active_airlines, inactive_airlines], labels=['Active', 'Inactive'], autopct='%1.1f%%')
@@ -217,10 +217,12 @@ ax.set_ylabel('Number of Airports')
 ax.set_title('Top Ten Cities with At Least 2 Airports', fontweight='bold', fontsize=10)
 plt.xticks(rotation=90)
 
-"""A bar chart that shows the top ten cities with the highest number of airports in Africa. This chart will provide users with a sense of the importance of different cities in the continent's air travel infrastructure."""
+"""A bar chart below shows the top ten cities with the highest number of airports in Africa. This chart will provide users with a sense of the importance of different cities in the continent's air travel infrastructure."""
 # Display the chart on a Streamlit app
 st.pyplot(fig)
 
+""" """
 
+"""Overall, our dashboard will provide users with a comprehensive overview of the state of air travel infrastructure in Africa and will highlight areas where investment and development could be particularly beneficial. By combining multiple visualizations and charts, the dashboard will enable users to explore different aspects of the air travel sector in Africa, and gain insights into the current state of the industry. Whether users are investors, policymakers, or researchers, this dashboard will provide a valuable resource for understanding the opportunities and challenges facing the air travel sector in Africa, and for identifying areas where intervention and support may be needed to drive growth and development."""
 
 
