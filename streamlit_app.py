@@ -110,8 +110,8 @@ for i, row in routes.iterrows():
         go.Scattergeo(
             lat=[row['latitude_source'], row['latitude_destination']],
             lon=[row['longitude_source'], row['longitude_destination']],
-            mode='lines+markers',
-            line=dict(width=1, color='red', shape='spline'),
+            mode='lines',
+            line=dict(width=1, color='red'),
             hoverinfo='text',
             text=f"{row['airport_source']} to {row['airport_destination']}",
             name='Flight Route'
@@ -132,7 +132,6 @@ figure.update_layout(
 
 # Display the figure on Streamlit
 st.plotly_chart(figure)
-
 
 #load airlines data
 
