@@ -58,13 +58,9 @@ airports = airports[~airports['airport'].isin(airports_to_drop)]
 # group the airports by country and count the number of airports in each country
 airports1 = airports.groupby('country')['airport'].count().reset_index()
 
-# merge the airport counts back into the original DataFrame
-airports1 = pd.merge(airports, airports1, on='country')
-
 # print the the table rows of the updated DataFrame to check the results
-
 st.write('**Number Of Airports in African Countries**')
-#st.table(airports1)
+st.table(airports1)
 
 st.bar_chart(airports1, x='country', y='airports1')
 
