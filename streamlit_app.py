@@ -211,7 +211,7 @@ fig, ax = plt.subplots()
 ax.bar(top_ten_countries.index, top_ten_countries.values)
 ax.set_xlabel('City')
 ax.set_ylabel('Number of Airports')
-ax.set_title('Top Ten Cities with At Least 2 Airports', fontweight='bold', fontsize=18)
+ax.set_title('Top Ten Cities with At Least 2 Airports', fontweight='bold', fontsize=10)
 plt.xticks(rotation=90)
 
 # Display the chart on a Streamlit app
