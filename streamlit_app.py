@@ -110,7 +110,7 @@ for i, row in routes.iterrows():
 figure.update_layout(
     title='Flight Routes in Africa',
     geo=dict(
-        scope='africa',
+        scope='world',
         projection_type='natural earth',
         showland=True,
         landcolor='rgb(243, 243, 243)',
