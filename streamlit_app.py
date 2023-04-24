@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 from shapely.geometry import LineString
 import streamlit as st
 import folium
+import plotly.graph_objs as go
 import leafmap.foliumap as leafmap
 from streamlit_folium import st_folium
 import plotly.express as px
