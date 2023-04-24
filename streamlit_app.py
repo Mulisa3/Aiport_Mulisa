@@ -89,6 +89,9 @@ routes = gpd.GeoDataFrame(routes, geometry=geometry, crs='EPSG:4326')
 # Create a new figure
 figure = go.Figure()
 
+# Create a new figure
+figure = go.Figure()
+
 # Create a trace for each flight route
 for i, row in routes.iterrows():
     figure.add_trace(
@@ -115,8 +118,8 @@ figure.update_layout(
     ),
 )
 
-# Show the figure
-figure.show()
+# Display the figure on Streamlit
+st.plotly_chart(figure)
 
 
 # print the the table rows of the updated DataFrame to check the results
