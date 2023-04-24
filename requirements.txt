@@ -3,7 +3,7 @@ numpy
 pandas
 geopandas
 pyproject-toml
-shapely --no-binary=shapely
+shapely
 pyshp
 pyproj
 matplotlib
