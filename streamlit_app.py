@@ -80,7 +80,7 @@ m.to_streamlit()
 # create a choropleth map using plotly express
 fig = px.choropleth(airports1, locations='country', locationmode='country names',
                     color='airport', range_color=[0, max(airports1['airport'])],
-                    title='Number of Airports by Country in Africa')
+                    title='An Africa map that shows the total number of airports per country')
 
 # set the map projection and center it on Africa
 fig.update_geos(projection_type='natural earth', center=dict(lon=20, lat=0), scope='africa') 
