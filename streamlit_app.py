@@ -20,7 +20,7 @@ Air travel infrastructure plays a critical role in driving economic development,
 
 To better understand the state of air travel infrastructure in Africa, we have developed a dashboard that visualizes data on the distribution of airports and airline activity across the continent. Our dashboard includes a variety of charts and visualizations, including a bar graph of the total number of airports in each African country, a pie chart that shows the distribution of active and inactive airlines in each country, and an interactive map that displays the location of airports across Africa and the routes between them.
 """
-
+##############################################################!####################################################################
 #Load the airport data
 
 airports =  pd.read_csv('airports.dat', header=None, na_values=['\\N'], dtype=str) #read airports data
@@ -60,7 +60,7 @@ airports = airports[~airports['airport'].isin(airports_to_drop)]
 airports1 = airports.groupby('country')['airport'].count().reset_index()
 
 
-
+############################################################!#####################################################
 #Load routes data
 
 routes =  pd.read_csv('routes.dat', header=None, na_values=['\\N'], dtype=str) #read routes data
@@ -83,7 +83,7 @@ routes = pd.merge(routes, destination_airports, left_on='destination_airport', r
 geometry = [LineString([[routes.iloc[i]['longitude_source'], routes.iloc[i]['latitude_source']], [routes.iloc[i]['longitude_destination'], routes.iloc[i]['latitude_destination']]]) for i in range(routes.shape[0])]
 routes = gpd.GeoDataFrame(routes, geometry=geometry, crs='EPSG:4326')
 
-
+############################################################!####################################
 
 # Create a world map to show distributions of airports in Africa
 
@@ -99,6 +99,8 @@ st.markdown("<h1 style='font-size:18px;'>A world map that shows the distribution
 """The interactive map above provides a detailed view of the location of airports across the continent. The map highlights the fact that many of the major airports in Africa are in or near major cities, such as Johannesburg in South Africa, Lagos in Nigeria, and Cairo in Egypt. This map wallow users to zoom in and out and click on individual airports to see more detailed information about their location, activity, and time zone.A user can also be able to search and measure the distance between airports of interest. By visualizing the distribution of airports across the continent, this map will provide users with a sense of how air travel infrastructure is distributed across different regions of Africa."""
 m.to_streamlit()
 
+##########################################################!#####################################
+#Create a flight routes map
 
 # Create a new figure
 figure = go.Figure()
@@ -134,6 +136,7 @@ figure.update_layout(
 st.plotly_chart(figure)
 """This African map shows flight routes between different countries and cities. This map uses the users to explore the connectivity of different cities and regions across the continent. By visualizing the network of flight routes in Africa, this map will help users understand the importance of different cities and airports in the continent's air travel infrastructure. The map also shows that there are significant gaps in air travel infrastructure in some regions of the continent, particularly in central Africa."""
 
+######################################################!#####################################################
 #load airlines data
 
 airlines =  pd.read_csv('airlines.dat', header=None, na_values=['\\N'], dtype=str) #read airlines data
@@ -159,7 +162,7 @@ african_countries = ['Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', '
 airlines = airlines[airlines['country'].isin(african_countries)]
 
 ###################################################################!#################
-#Dispaly Charts
+#Dispaly Chart abar graph that shows the total number of airports in each African country
 #st.table(airports1)
 
 st.write(
@@ -169,8 +172,9 @@ st.write(
 """This bar chart shows the total number of airports in each African country. This chart will provide users with a broad overview of the distribution of airport infrastructure across the continent and will highlight countries that have relatively low numbers of airports and may benefit from investment and development."""
 st.bar_chart(airports1, x='country', y='airport')
 ###############################################################!################################
+#Create a pie chart
 
-# Create a list of airports to drop,these airports are not in Africa.
+# Create a list of airports to drop,these airports are not in Africa,their coordinate are not in Africa but the data stated that they from one of the African coutry
 airports_to_drop = ['Newnan Hospital Heliport', 'Shuttle Landing Facility Airport', 'Burnet Municipal Kate Craddock Field', 'Los Alamitos Army Air Field', 'Nasa Shuttle Landing Facility Airport']
 
 
@@ -198,7 +202,7 @@ st.sidebar.markdown(f'Inactive airlines in **{selected_country}**: {inactive_air
 
 
 ####################################!##############
-
+#Create a bar graph
 
 # Count the number of airports for each country
 country_counts = airports['city'].value_counts()
@@ -221,6 +225,7 @@ plt.xticks(rotation=90)
 # Display the chart on a Streamlit app
 st.pyplot(fig)
 
+###########################################################!###########################################################################################
 """ """
 
 """Overall, our dashboard will provide users with a comprehensive overview of the state of air travel infrastructure in Africa and will highlight areas where investment and development could be particularly beneficial. By combining multiple visualizations and charts, the dashboard will enable users to explore different aspects of the air travel sector in Africa, and gain insights into the current state of the industry. Whether users are investors, policymakers, or researchers, this dashboard will provide a valuable resource for understanding the opportunities and challenges facing the air travel sector in Africa, and for identifying areas where intervention and support may be needed to drive growth and development."""
