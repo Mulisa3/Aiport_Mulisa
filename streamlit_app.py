@@ -184,5 +184,11 @@ inactive_airlines = selected_df[selected_df['active'] == 'N']['airline'].count()
 fig, ax = plt.subplots()
 ax.pie([active_airlines, inactive_airlines], labels=['Active', 'Inactive'], autopct='%1.1f%%')
 ax.set_title(f'Active Airlines in {selected_country}')
+
+# Show the pie chart and the filter pop-up
 st.pyplot(fig)
+st.sidebar.markdown('---')
+st.sidebar.markdown(f'Active airlines in **{selected_country}**: {active_airlines}')
+st.sidebar.markdown(f'Inactive airlines in **{selected_country}**: {inactive_airlines}')
+
 
