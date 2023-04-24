@@ -191,4 +191,36 @@ st.sidebar.markdown('---')
 st.sidebar.markdown(f'Active airlines in **{selected_country}**: {active_airlines}')
 st.sidebar.markdown(f'Inactive airlines in **{selected_country}**: {inactive_airlines}')
 
+##############################
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import streamlit as st
+
+# Load the airline data
+airlines_df = pd.read_csv('airlines.csv')
+
+# Create a function to plot the pie chart
+def plot_pie_chart(country):
+    # Create a new dataframe for the selected country
+    selected_df = airlines[airlines['country'] == country]
+
+    # Count the number of active and inactive airlines for the selected country
+    active_airlines = selected_df[selected_df['active'] == 'Y']['airlines'].count()
+    inactive_airlines = selected_df[selected_df['active'] == 'N']['airlines'].count()
+
+    # Create the pie chart
+    fig, ax = plt.subplots()
+    ax.pie([active_airlines, inactive_airlines], labels=['Active', 'Inactive'], autopct='%1.1f%%')
+    ax.set_title(f'Active Airlines in {country}')
+    st.pyplot(fig)
+
+# Get the unique countries in the data
+countries = airlines['country'].unique()
+
+# Display the pie chart and filter for each country
+for country in countries:
+    st.header(f"{country}")
+    plot_pie_chart(country)
+    st.sidebar.selectbox('Select a country', countries)
 
