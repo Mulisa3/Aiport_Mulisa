@@ -101,8 +101,7 @@ fig = px.choropleth(airports1,
                     range_color=[0, max(airports1['airport'])],
                     title='Airports by Country',
                     scope=['comoros', 'madagascar', 'mauritius', 'mayotte', 'reunion', 'zimbabwe'],
-                    center={'lat': -10.0, 'lon': 30.0},
-                    mapbox_style='carto-positron')
+                    center={'lat': -10.0, 'lon': 30.0})
 
 # display the map in Streamlit
 st.plotly_chart(fig)
