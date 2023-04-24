@@ -3,7 +3,6 @@ numpy
 pandas
 geopandas
 shapely --no-binary=shapely
-cartopy --no-binary=cartopy
 pyshp
 pyproj
 matplotlib
