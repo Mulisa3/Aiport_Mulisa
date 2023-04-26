@@ -18,8 +18,7 @@ import plotly.express as px
 
 Air travel infrastructure plays a critical role in driving economic development, facilitating international trade and travel, and connecting people and businesses across the world. In Africa, however, air travel infrastructure remains underdeveloped and inadequate, hindering the continent's ability to fully participate in the global economy and limiting opportunities for growth and development.
 
-To better understand the state of air travel infrastructure in Africa, we have developed a dashboard that visualizes data on the distribution of airports and airline activity across the continent. Our dashboard includes a variety of charts and visualizations, including a bar graph of the total number of airports in each African country, a pie chart that shows the distribution of active and inactive airlines in each country, and an interactive map that displays the location of airports across Africa and the routes between them.
-"""
+To better understand the state of air travel infrastructure in Africa, we have developed a dashboard that visualizes data on the distribution of airports and airline activity across the continent. Our dashboard includes a variety of charts and visualizations, including a bar graph of the total number of airports in each African country, a pie chart that shows the distribution of active and inactive airlines in each country, and an interactive map that displays the location of airports across Africa and the routes between them"""
 ##############################################################!####################################################################
 #Load the airport data
 
@@ -95,8 +94,8 @@ for index, row in airports.iterrows():
     folium.Marker([row['latitude'], row['longitude']], popup=popup).add_to(m)
     
 #Display a map show distributions of airports in Africa
-st.markdown("<h1 style='font-size:18px;'>A world map that shows the distributions of airports in Africa</h1>", unsafe_allow_html=True)
-"""The interactive map above provides a detailed view of the location of airports across the continent. The map highlights the fact that many of the major airports in Africa are in or near major cities, such as Johannesburg in South Africa, Lagos in Nigeria, and Cairo in Egypt. This map allow users to zoom in and out and click on individual airports to see more detailed information about their location, activity, and time zone.A user can also be able to search and measure the distance between airports of interest. By visualizing the distribution of airports across the continent, this map will provide users with a sense of how air travel infrastructure is distributed across different regions of Africa."""
+st.markdown("<h1 style='font-size:18px;'>A world map that shows the distribution of airports in Africa</h1>", unsafe_allow_html=True)
+"""The interactive map above provides a detailed view of the location of airports across the continent. The map highlights the fact that many of the major airports in Africa are in or near major cities, such as Johannesburg in South Africa, Lagos in Nigeria, and Cairo in Egypt. This map allows users to zoom in and out and click on individual airports to see more detailed information about their location, activity, and time zone. A user can also be able to search and measure the distance between airports of interest. By visualizing the distribution of airports across the continent, this map will provide users with a sense of how air travel infrastructure is distributed across different regions of Africa."""
 m.to_streamlit()
 
 ##########################################################!#####################################
